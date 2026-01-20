@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>倪张昊 | Zhanghao Ni</title>
+  <meta name="description" content="倪张昊（Zhanghao Ni）个人主页｜统计学/机器学习/数据科学" />
+
+  <!-- 可选：更接近模板站的衬线标题字体（不想联网就删掉这段 link） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#121212;
+      --muted:#5b5b5b;
+      --line:#e9e9ee;
+      --card:#ffffff;
+
+      --accent:#0f766e;      /* 深青 */
+      --accent2:#cdbca7;     /* 暖米色 */
+      --accent3:#0b1220;     /* 深底 */
+
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+      --r: 18px;
+
+      --max: 1100px;
+      --serif: "DM Serif Display", ui-serif, Georgia, "Times New Roman", serif;
+      --sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--ink);
+      background:var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Layout */
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+    .section{padding:72px 0}
+    .muted{color:var(--muted)}
+    .kicker{
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:12px;
+      color:var(--muted);
+      margin:0 0 12px;
+    }
+    h1,h2,h3{margin:0}
+    h1{
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:56px;
+      line-height:1.04;
+      letter-spacing:-.6px;
+    }
+    h2{
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:40px;
+      line-height:1.12;
+      letter-spacing:-.4px;
+    }
+    h3{
+      font-weight:600;
+      font-size:18px;
+      line-height:1.25;
+    }
+    p{margin:0; line-height:1.8}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      backdrop-filter: blur(8px);
+      transition: .2s ease;
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.dark{
+      background: var(--accent3);
+      border:1px solid rgba(255,255,255,.10);
+      color:#fff;
+      backdrop-filter:none;
+    }
+    .btn.outline{
+      background:transparent;
+      border:1px solid var(--line);
+      color:var(--ink);
+    }
+
+    /* Top nav (simple, template-like) */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width: 210px;
+    }
+    .logo{
+      width:34px; height:34px;
+      border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(15,118,110,.25), transparent 45%),
+                  radial-gradient(circle at 70% 70%, rgba(205,188,167,.35), transparent 50%),
+                  #f4f4f7;
+      border:1px solid var(--line);
+    }
+    .brand b{font-size:13px}
+    .brand small{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+
+    .nav-links{
+      display:flex; gap:18px; flex-wrap:wrap;
+      justify-content:center;
+    }
+    .nav-links a{
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{
+      color:var(--ink);
+      background:#f3f4f7;
+    }
+    .nav-cta{min-width:210px; display:flex; justify-content:flex-end}
+    @media (max-width: 900px){
+      .nav-links{display:none}
+      .nav-cta{min-width:auto}
+      h1{font-size:44px}
+      h2{font-size:34px}
+    }
+
+    /* HERO with background image (placeholder) */
+    .hero{
+      position:relative;
+      min-height: 72vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.55)),
+        url("assets/hero.jpg") center/cover no-repeat; /* ← 换这里 */
+    }
+    .hero .wrap{padding:84px 22px}
+    .hero-grid{
+      max-width: 760px;
+    }
+    .hero-sub{
+      margin-top:14px;
+      color:rgba(255,255,255,.85);
+      font-size:15px;
+      line-height:1.9;
+      max-width: 680px;
+    }
+    .hero-bar{
+      margin-top:22px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding:14px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .hero-bar .msg{
+      color:rgba(255,255,255,.82);
+      font-size:13px;
+      line-height:1.6;
+      max-width: 520px;
+    }
+    .hero-title{
+      color:#fff;
+      text-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
+
+    /* About: left image + right text (template-like) */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap:36px;
+      align-items:center;
+    }
+    .about-photo{
+      border-radius: var(--r);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+      background:#f4f4f7;
+      aspect-ratio: 4/5;
+    }
+    .about-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .about-card{
+      padding:10px 0;
+    }
+    .about-card .lead{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .about-actions{
+      margin-top:22px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+
+    @media (max-width: 900px){
+      .two-col{grid-template-columns:1fr; gap:18px}
+      .about-photo{aspect-ratio: 16/9}
+    }
+
+    /* Services / What can I do */
+    .center{ text-align:center }
+    .services-wrap{ margin-top:28px }
+    .services{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    .service{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      padding:18px;
+      background: #fff;
+      transition:.2s ease;
+      box-shadow: 0 12px 28px rgba(0,0,0,.04);
+      min-height: 130px;
+    }
+    .service:hover{transform: translateY(-2px)}
+    .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(15,118,110,.15), rgba(205,188,167,.22));
+      border: 1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700;
+      color: var(--accent);
+    }
+    .service h3{margin-top:12px}
+    .service p{margin-top:8px; color:var(--muted); font-size:13px}
+
+    @media (max-width: 900px){
+      .services{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 520px){
+      .services{grid-template-columns:1fr}
+    }
+
+    /* Split CTA blocks (two big colored blocks) */
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:0;
+      border-radius: 26px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .split .pane{
+      padding:34px 28px;
+      color:#fff;
+      min-height: 230px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .pane.left{background: #0e3b43;}
+    .pane.right{background: #116b7a;}
+    .pane h3{font-family: var(--serif); font-weight:400; font-size:26px}
+    .pane p{color: rgba(255,255,255,.86); font-size:13.5px}
+    .pane .btn{align-self:flex-start}
+    @media (max-width: 900px){
+      .split{grid-template-columns:1fr}
+    }
+
+    /* Portfolio / Gallery grid like the second screenshot */
+    .gallery{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .tile{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#f4f4f7;
+      box-shadow: 0 12px 26px rgba(0,0,0,.04);
+      aspect-ratio: 1/1;
+      position:relative;
+    }
+    .tile img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition: transform .35s ease;
+    }
+    .tile:hover img{transform: scale(1.03)}
+    .tile .cap{
+      position:absolute;
+      left:12px; right:12px; bottom:12px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(10px);
+      font-size:12px;
+      color: #202020;
+      opacity:0;
+      transform: translateY(6px);
+      transition:.25s ease;
+    }
+    .tile:hover .cap{opacity:1; transform: translateY(0px)}
+    @media (max-width: 900px){
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 520px){
+      .gallery{grid-template-columns:1fr}
+    }
+
+    /* Contact band with background image (Get Connected style) */
+    .band{
+      position:relative;
+      padding:72px 0;
+      color:#fff;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.70)),
+        url("assets/contact-bg.jpg") center/cover no-repeat; /* ← 换这里 */
+    }
+    .band .box{
+      max-width: 720px;
+      margin:0 auto;
+      text-align:center;
+      padding: 22px 18px;
+    }
+    .band h2{color:#fff}
+    .social{
+      margin-top:18px;
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    }
+    .social a{
+      width:44px; height:44px;
+      display:flex; align-items:center; justify-content:center;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.10);
+      transition:.2s ease;
+      font-weight:700;
+    }
+    .social a:hover{transform: translateY(-1px)}
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    .foot-links{
+      display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .foot-links a{color:var(--muted)}
+    .foot-links a:hover{color:var(--ink)}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>倪张昊 · Zhanghao Ni</b>
+          <small>Statistics · Machine Learning · Data Science</small>
+        </div>
+      </div>
+
+      <div class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">What I Do</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-cta">
+        <a class="btn dark" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="kicker" style="color:rgba(255,255,255,.75)">Personal Website</div>
+        <h1 class="hero-title">Building Impact Across Disciplines, Cultures, and Systems</h1>
+        <p class="hero-sub">
+          From military service to big tech and Ivy League statistics,
+          I work at the intersection of data, execution, and real-world decision-making.
+        </p>
+
+        <div class="hero-bar">
+          <div class="msg">
+            Open to full-time opportunities in Data Science, Machine Learning, and Quantitative Research.
+            Strong background in modeling, experimentation, and cross-functional collaboration.
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn" href="#about">Learn more</a>
+            <a class="btn" href="#portfolio">View work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="about-photo">
+          <!-- 换图片：把 assets/about.jpg 换成你的照片（也可改路径） -->
+          <img src="assets/about.jpg" alt="About photo placeholder">
+        </div>
+
+        <div class="about-card">
+          <div class="kicker">Welcome</div>
+          <h2>Hi! Welcome to my personal website.</h2>
+          <p class="muted lead">
+            I am a Master’s student in Statistics at Columbia University, specializing in machine learning and applied data science.
+            My academic training focuses on statistical modeling, large-scale data analysis, and modern machine learning methods, while my industry experience spans healthcare research, overseas ads monetization, and ride-hailing platforms in Brazil.
+            I enjoy working at the intersection of data, products, and decision-making—turning complex datasets into interpretable models, actionable insights, and measurable business impact.
+          </p>
+          <p class="muted lead">
+            I have hands-on experience with Python, SQL, PyTorch, and large datasets, as well as experiment design and A/B testing.
+            With a background in international economics and proficiency in Chinese, English, and Portuguese, I am comfortable collaborating across cultures and communicating technical insights to both technical and non-technical stakeholders.
+            I value discipline, clarity, and responsibility, and I enjoy solving complex problems in fast-changing, real-world environments.
+          </p>
+          <div class="about-actions">
+            <a class="btn outline" href="#services">What I do</a>
+            <a class="btn outline" href="#contact">Contact</a>
+            <!-- 可选：简历链接（放一个 resume.pdf 在同目录） -->
+            <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- SELECTED EXPERIENCES -->
+  <section class="section" id="portfolio">
+    <div class="wrap">
+      <div class="center">
+        <div class="kicker">Selected Experiences</div>
+        <h2>What Shaped How I Work</h2>
+        <p class="muted" style="margin-top:12px">
+          A few representative experiences that reflect my background, mindset, and approach to problem solving.
+        </p>
+      </div>
+
+      <div class="gallery">
+
+        <div class="tile">
+          <img src="assets/exp2.jpg" alt="Military Service">
+          <div class="cap">
+            Military Service<br>
+            <span style="opacity:.75">Discipline, responsibility, execution</span>
+          </div>
+        </div>
+        
+        <div class="tile">
+          <img src="assets/exp1.jpg" alt="Big Tech Internship">
+          <div class="cap">
+            Big Tech Internships<br>
+            <span style="opacity:.75">Data, growth, and experimentation</span>
+          </div>
+        </div>
+
+        <div class="tile">
+          <img src="assets/exp3.jpg" alt="Academic Training">
+          <div class="cap">
+            Academic & Research Training<br>
+            <span style="opacity:.75">Statistics, ML, healthcare research</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:22px">
+        <a class="btn outline" href="#contact">Let’s Connect</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT BAND -->
+  <section class="band" id="contact">
+    <div class="wrap">
+      <div class="box">
+        <div class="kicker" style="color:rgba(255,255,255,.75)"></div>
+        <h2>Get Connected</h2>
+        <p style="margin-top:12px; color:rgba(255,255,255,.85)">
+          I am always happy to connect and discuss opportunities, collaborations, or interesting problems at the intersection of data, machine learning, and real-world impact.
+        </p>
+        <div style="margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a class="btn" href="mailto:lucasah1209@163.com">Email</a>
+          <a class="btn" href="tel:+8618857399001">Phone</a>
+          <!-- 把下面替换成你的 GitHub / LinkedIn -->
+          <a class="btn"
+             href="https://www.linkedin.com/in/zhanghao-ni-6b9583327"
+             target="_blank"
+             rel="noopener noreferrer">
+             LinkedIn
+          </a>
+
+          <a class="btn"
+             href="https://github.com/LucasahYA"
+             target="_blank"
+             rel="noopener noreferrer">
+             GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="y"></span> 倪张昊 · Built with HTML/CSS</div>
+      <div class="foot-links">
+        <a href="#top">Top</a>
+        <a href="#about">About</a>
+        <a href="#services">What I Do</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
